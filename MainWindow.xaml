@@ -3,10 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TempDir"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="TempDir"
+        Height="350" Width="500" x:ClassModifier="internal"><!-- TODO: Add icon in a way that works. -->
         
-    </Grid>
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Width="180" Margin="5">
+            <Button Content="Mark _new folder"
+                    Margin="2"
+                    Click="MarkFolderButton_Click" />
+            <Button Name="EditFolderButton" Content="_Edit folder"
+                    Margin="2" IsEnabled="False"
+                    Click="EditFolderButton_Click" />
+            <Button Name="UnmarkFolderButton" Content="_Unmark folder"
+                    Margin="2" IsEnabled="False"
+                    Click="UnmarkFolderButton_Click" />
+                
+            <StackPanel HorizontalAlignment="Right" Orientation="Vertical" DockPanel.Dock="Right"
+                        Width="40" Margin="0,50">
+                <Button Name="MoveUpButton" Content="▲"
+                        Margin="2" IsEnabled="False" 
+                        Click="MoveUpButton_Click" />
+                <Button Name="MoveDownButton" Content="▼"
+                        Margin="2" IsEnabled="False"
+                        Click="MoveDownButton_Click" />
+            </StackPanel>
+        </StackPanel>
+            
+        <ListBox Name="CurrentFoldersListBox"
+                 DisplayMemberPath="Name"
+                 Margin="5"
+                 SelectionChanged="CurrentFoldersListBox_OnSelectionChanged" />
+    </DockPanel>
 </Window>
